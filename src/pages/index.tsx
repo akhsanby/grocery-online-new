@@ -7,7 +7,7 @@ export default function Login() {
         <div className="overflow-hidden rounded-lg bg-white shadow sm:w-[350px] lg:w-[400px]">
           <div className="px-4 py-5 sm:p-6">
             <div className="sm:mx-auto sm:w-full ">
-              <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login to your account</h2>
+              <h2 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login to your account</h2>
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full">

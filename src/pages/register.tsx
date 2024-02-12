@@ -7,7 +7,7 @@ export default function Register() {
         <div className="overflow-hidden rounded-lg bg-white shadow sm:w-[350px] lg:w-[400px]">
           <div className="px-4 py-5 sm:p-6">
             <div className="sm:mx-auto sm:w-full ">
-              <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register new account</h2>
+              <h2 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register new account</h2>
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full">
@@ -41,12 +41,12 @@ export default function Register() {
                 </div>
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label htmlFor="confirm-password" className="block text-sm font-medium leading-6 text-gray-900">
                       Confirm Password
                     </label>
                   </div>
                   <div className="mt-1">
-                    <input id="password" name="password" type="password" autoComplete="current-password" required className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="confirm-password" name="confirm-password" type="password" autoComplete="current-password" required className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   </div>
                 </div>
 
