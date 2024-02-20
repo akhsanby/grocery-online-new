@@ -45,7 +45,7 @@ const products = [
   {
     id: 1,
     name: "Basic Tee 8-Pack",
-    href: "#",
+    href: "/home/product",
     price: "$256",
     description: "Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.",
     options: "8 colors",
@@ -55,7 +55,7 @@ const products = [
   {
     id: 2,
     name: "Basic Tee",
-    href: "#",
+    href: "/home/product",
     price: "$32",
     description: "Look like a visionary CEO and wear the same black t-shirt every day.",
     options: "Black",

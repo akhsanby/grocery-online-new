@@ -3,6 +3,7 @@ import { RadioGroup } from "@headlessui/react";
 import { CurrencyDollarIcon, GlobeAmericasIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 const product = {
   name: "Basic Tee",
@@ -69,6 +70,7 @@ function classNames(...classes: any) {
 export default function Example() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const router = useRouter();
 
   return (
     <Layout>
@@ -149,7 +151,7 @@ export default function Example() {
                 </RadioGroup>
               </div>
 
-              <button type="submit" className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button type="button" onClick={() => router.replace("/home/cart")} className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Add to cart
               </button>
             </form>

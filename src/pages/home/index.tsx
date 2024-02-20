@@ -38,9 +38,9 @@ export default function Home() {
         <div className="relative">
           <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">New arrivals are here</h1>
           <p className="mt-4 text-xl text-white">The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they're still in stock.</p>
-          <a href="#" className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">
+          <Link href="/home/categories" className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">
             Shop New Arrivals
-          </a>
+          </Link>
         </div>
       </div>
       {/* Category section */}
@@ -49,10 +49,10 @@ export default function Home() {
           <h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
             Shop by Category
           </h2>
-          <a href="#" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+          <Link href="/home/categories" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
-          </a>
+          </Link>
         </div>
 
         <div className="mt-4 flow-root">
