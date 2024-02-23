@@ -65,7 +65,28 @@ async function login(request) {
   });
 }
 
+async function get(token) {
+  const user = await prismaClient.user.findFirst({
+    where: {
+      token,
+    },
+    select: {
+      id: true,
+      full_name: true,
+      email: true,
+      role: true,
+      address: true,
+      phone_number: true,
+    },
+  });
+
+  if (!user) throw new ResponseError(404, "User is not found");
+
+  return user;
+}
+
 export default {
   register,
   login,
+  get,
 };
