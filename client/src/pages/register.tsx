@@ -1,8 +1,26 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useLoginStore, useRegisterStore } from "@/utils/store/auth";
+import axiosClient from "@/utils/axios";
 
 export default function Register() {
   const router = useRouter();
+  const { fullName, email, password, confirmPassword, setFullName, setEmail, setPassword, setConfirmPassword, reset } = useRegisterStore((state) => state);
+  const { setSuccessRegister } = useLoginStore((state) => state);
+
+  function handleRegister(e: any) {
+    e.preventDefault();
+    axiosClient
+      .post("/api/user/register", { full_name: fullName, email, password, confirm_password: confirmPassword })
+      .then((result) => {
+        setSuccessRegister();
+        router.replace("/");
+      })
+      .catch((err) => {
+        reset();
+        console.error(err);
+      });
+  }
 
   return (
     <div className="h-screen">
@@ -14,13 +32,13 @@ export default function Register() {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full">
-              <form className="space-y-3">
+              <form className="space-y-3" onSubmit={(e) => handleRegister(e)}>
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium leading-6 text-gray-900">
                     Full Name
                   </label>
                   <div className="mt-1">
-                    <input id="fullName" type="text" className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   </div>
                 </div>
                 <div>
@@ -28,7 +46,7 @@ export default function Register() {
                     Email address
                   </label>
                   <div className="mt-1">
-                    <input id="email" type="email" className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   </div>
                 </div>
 
@@ -39,7 +57,7 @@ export default function Register() {
                     </label>
                   </div>
                   <div className="mt-1">
-                    <input id="password" type="password" className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   </div>
                 </div>
                 <div>
@@ -49,12 +67,12 @@ export default function Register() {
                     </label>
                   </div>
                   <div className="mt-1">
-                    <input id="confirm-password" type="password" className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <input id="confirm-password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                   </div>
                 </div>
 
                 <div>
-                  <button type="button" onClick={() => router.replace("/")} className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Register
                   </button>
                 </div>
