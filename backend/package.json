@@ -2,8 +2,9 @@
   "name": "grocery-online-backend",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start-server": "node ./backend/main.js"
+    "start": "node ./main.js"
   },
   "dependencies": {
     "@prisma/client": "^5.9.1",
