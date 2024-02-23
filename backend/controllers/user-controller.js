@@ -30,7 +30,24 @@ async function login(req, res) {
   }
 }
 
+async function get(req, res) {
+  try {
+    const token = req.headers["Authorization"];
+    const result = await userService.get(token);
+
+    res.status(200).json({
+      status: "Success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "Fail",
+    });
+  }
+}
+
 export default {
   register,
   login,
+  get,
 };
