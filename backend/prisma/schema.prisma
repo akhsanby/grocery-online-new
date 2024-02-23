@@ -25,7 +25,7 @@ model User {
   profile_pic String? @db.Text
   about_me String? @db.Text
   role Role @default(customer)
-  token String? @db.VarChar(250)
+  token String? @db.VarChar(250) @unique
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
